@@ -37,7 +37,7 @@ spec:
                   mountPath: /opt/config_values
               envFrom:
                 - secretRef:
-                    name: {{ template "sml-internal-steward.fullname" . }}
+                    name: {{ template "github-token-secret-name" . }}
               env:
                 - name: GIT_AUTHOR_NAME
                   value: {{ .Values.steward.gitAuthorName | quote }}

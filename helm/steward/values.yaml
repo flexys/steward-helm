@@ -16,6 +16,10 @@ steward:
   gitAuthorName:
   gitAuthorEmail:
 
+# If empty, the chart will create the secret containing the github token.
+# If not empty - the already existing secret is used.
+# The secret should have a field names GITHUB_TOKEN
+existingSecretName:
 
 image:
   repository: fthomas/scala-steward

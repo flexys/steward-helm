@@ -30,3 +30,11 @@ Create chart name and version as used by the chart label.
 {{- define "sml-internal-steward.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "github-token-secret-name" -}}
+{{- if .Values.existingSecretName -}}
+{{- .Values.existingSecretName -}}
+{{- else -}}
+{{- template "sml-internal-steward.fullname" . -}}
+{{- end -}}
+{{- end -}}

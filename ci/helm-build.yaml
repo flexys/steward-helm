@@ -1,0 +1,16 @@
+---
+params:
+  CHART_PATH:
+  CHART:
+
+platform: linux
+
+inputs:
+  - name: steward-helm
+  - name: helm-repo
+
+outputs:
+  - name: helm-updates
+
+run:
+  path: steward-helm/ci/helm-build.sh

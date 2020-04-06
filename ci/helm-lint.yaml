@@ -1,0 +1,12 @@
+---
+params:
+  CHART_PATH:
+  CHART:
+
+platform: linux
+
+inputs:
+  - name: steward-helm
+
+run:
+  path: steward-helm/ci/helm-lint.sh

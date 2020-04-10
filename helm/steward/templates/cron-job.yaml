@@ -1,10 +1,10 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "sml-internal-steward.fullname" . }}
+  name: {{ template "steward.fullname" . }}
   labels:
-    app: {{ template "sml-internal-steward.name" . }}
-    chart: {{ template "sml-internal-steward.chart" . }}
+    app: {{ template "steward.name" . }}
+    chart: {{ template "steward.chart" . }}
     release: {{ .Release.Name }}
 spec:
   schedule: {{ .Values.cron.interval | quote }}
@@ -13,7 +13,7 @@ spec:
       template:
         metadata:
           labels:
-            app: {{ template "sml-internal-steward.name" . }}
+            app: {{ template "steward.name" . }}
             release: {{ .Release.Name }}
           annotations:
             releaseTimestamp: {{ now }}
@@ -50,10 +50,10 @@ spec:
           volumes:
             - name: data
               persistentVolumeClaim:
-                claimName: {{ .Values.persistence.workspace | default (include "sml-internal-steward.fullname" .) }}
+                claimName: {{ .Values.persistence.workspace | default (include "steward.fullname" .) }}
             - name: config-values
               configMap:
-                name: {{ template "sml-internal-steward.fullname" . }}
+                name: {{ template "steward.fullname" . }}
                 defaultMode: 493
         {{- with .Values.nodeSelector }}
           nodeSelector:

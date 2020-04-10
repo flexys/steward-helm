@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "sml-internal-steward.fullname" . }}
+  name: {{ template "steward.fullname" . }}
 data:
   git_ask_pass_script.sh: |-
 {{- .Values.askPassScript | nindent 4 }}
